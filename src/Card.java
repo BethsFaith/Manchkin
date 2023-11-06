@@ -1,6 +1,6 @@
 public abstract class Card {
     public abstract void Play(Selectable target);
-    public abstract void Leave();
+    public abstract void Leave(Selectable target);
 
     public String getName() {
         return name;
