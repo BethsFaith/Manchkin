@@ -1,8 +1,11 @@
 package Person;
 
+import Gear.*;
 import Common.Selectable;
 
-public class Person implements Selectable {
+import java.util.ArrayList;
+
+public class Person extends Selectable {
     public enum Race{    //раса персонажа
         elf,            //эльф
         halfling,       //халфлинг
@@ -45,10 +48,6 @@ public class Person implements Selectable {
     public void setCur_class(Class cur_class) {
         this.cur_class = cur_class;
     }
-
-    public void setHelmet(ArmorHelmet helmet) {
-        this.helmet = helmet;
-    }
     
     public void decreaseLevel(int points) {
         // понизить уровень на заданный points, проверить чтобы левел не был ниже начального(1)
@@ -61,9 +60,13 @@ public class Person implements Selectable {
     public void resetLevel(){
         // сбросить уровень до начальноого
     }
-
+    public ArrayList<WeaponGear> weapons; //оружие в руке
+    public int hand_size = 0;
+    public ArmorGear helmet;    //шлем
+    public ArmorGear body;        //тело
+    public ArmorGear legs;        //ноги
+    public ArrayList<WearableGear> others; //оружие в руке
     Race race;          // текущая раса
     Class cur_class;    // текущий класс
-    ArmorHelmet helmet; // шлем
     int level;          // текущий уровень
 }

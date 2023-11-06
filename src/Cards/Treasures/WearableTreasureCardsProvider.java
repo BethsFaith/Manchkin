@@ -1,70 +1,76 @@
+package Cards.Treasures;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import Gear.ArmorGear;
+import Gear.WeaponGear;
+import Person.Person;
 
 public class WearableTreasureCardsProvider {
     static public List<WearableTreasureCard> getAllOneTimeCards() {
         List<WearableTreasureCard> cards = new ArrayList<>();
 
-        WearableTreasureCard tights = new ArmorWearableTreasureCard(ArmorWearableTreasureCard.Slot.Other, "Колготы великанской силы", 600, false, 3);
+        WearableTreasureCard tights = new ArmorWearableTreasureCard("Колготы великанской силы", 600, new ArmorGear(3, false, ArmorGear.Slot.Other));
         tights.setPlay(new WearablePlay() {
             @Override
-            public void Wear(WearableTreasureCard wearable, Person2 target) {
-                if (target.my_class == Person2.Class.warrior) {
+            public void Wear(WearableTreasureCard wearable, Person target) {
+                if (target.getCur_class() == Person.Class.warrior) {
                     return;
                 }
                 ((ArmorWearableTreasureCard) wearable).wearArmor(target);
             }
 
             @Override
-            public void UnWear(WearableTreasureCard wearable, Person2 target) {
+            public void UnWear(WearableTreasureCard wearable, Person target) {
                 ((ArmorWearableTreasureCard) wearable).unWearArmor(target);
             }
         });
         cards.add(tights);
 
-        WeaponWearableTreasureCard cheese = new WeaponWearableTreasureCard(WeaponWearableTreasureCard.Slot.OneHand, "Сыротерка умиротворения", 400, false, 3);
+        WeaponWearableTreasureCard cheese = new WeaponWearableTreasureCard("Сыротерка умиротворения", 400, new WeaponGear(3, false, WeaponGear.Size.OneHand));
         cheese.setPlay(new WearablePlay() {
             @Override
-            public void Wear(WearableTreasureCard wearable, Person2 target) {
-                if (target.my_class != Person2.Class.cleric) {
+            public void Wear(WearableTreasureCard wearable, Person target) {
+                if (target.getCur_class() != Person.Class.cleric) {
                     return;
                 }
                 ((WeaponWearableTreasureCard) wearable).addWeapon(target);
             }
 
             @Override
-            public void UnWear(WearableTreasureCard wearable, Person2 target) {
+            public void UnWear(WearableTreasureCard wearable, Person target) {
                 ((WeaponWearableTreasureCard) wearable).removeWeapon(target);
             }
         });
         cards.add(cheese);
 
-        ArmorWearableTreasureCard bandana = new ArmorWearableTreasureCard(ArmorWearableTreasureCard.Slot.Helmet, "Бандана сволочизма", 400, false, 3);
+        ArmorWearableTreasureCard bandana = new ArmorWearableTreasureCard("Бандана сволочизма", 400, new ArmorGear(3, false, ArmorGear.Slot.Helmet));
         bandana.setPlay(new WearablePlay() {
             @Override
-            public void Wear(WearableTreasureCard wearable, Person2 target) {
-                if (target.my_race != Person2.Race.human) {
+            public void Wear(WearableTreasureCard wearable, Person target) {
+                if (target.getRace() != Person.Race.human) {
                     return;
                 }
                 ((ArmorWearableTreasureCard) wearable).wearArmor(target);
             }
 
             @Override
-            public void UnWear(WearableTreasureCard wearable, Person2 target) {
+            public void UnWear(WearableTreasureCard wearable, Person target) {
                 ((ArmorWearableTreasureCard) wearable).unWearArmor(target);
             }
         });
         cards.add(bandana);
 
-        ArmorWearableTreasureCard leather_armor = new ArmorWearableTreasureCard(ArmorWearableTreasureCard.Slot.Body, "Кожаный прикид", 200, false, 1);
+        ArmorWearableTreasureCard leather_armor = new ArmorWearableTreasureCard("Кожаный прикид", 200, new ArmorGear(1, false, ArmorGear.Slot.Body));
         leather_armor.setPlay(new WearablePlay() {
             @Override
-            public void Wear(WearableTreasureCard wearable, Person2 target) {
+            public void Wear(WearableTreasureCard wearable, Person target) {
                 ((ArmorWearableTreasureCard) wearable).wearArmor(target);
             }
 
             @Override
-            public void UnWear(WearableTreasureCard wearable, Person2 target) {
+            public void UnWear(WearableTreasureCard wearable, Person target) {
                 ((ArmorWearableTreasureCard) wearable).unWearArmor(target);
             }
         });

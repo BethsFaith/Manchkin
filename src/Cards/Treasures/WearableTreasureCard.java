@@ -1,19 +1,23 @@
+package Cards.Treasures;
+import Cards.TreasureCard;
+import Common.Selectable;
+import Person.Person;
+
 public class WearableTreasureCard extends TreasureCard {
-    public WearableTreasureCard(String name, int price, boolean is_big, int power) {
+    public WearableTreasureCard(String name, int price) {
+        super(Type.WEARABLE);
         setName(name);
         setPrice(price);
-        this.is_big = is_big;
-        this.power = power;
     }
 
     @Override
     public void Play(Selectable target) {
-        play.Wear(this, (Person2) target);
+        play.Wear(this, (Person) target);
     }
 
     @Override
     public void Leave(Selectable target) {
-        play.UnWear(this, (Person2) target);
+        play.UnWear(this, (Person) target);
     }
 
     public void setPlay(WearablePlay play) {
@@ -21,6 +25,4 @@ public class WearableTreasureCard extends TreasureCard {
     }
 
     WearablePlay play = null;
-    boolean is_big = false;
-    protected int power;
 }

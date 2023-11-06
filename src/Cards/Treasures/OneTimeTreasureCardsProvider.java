@@ -1,3 +1,8 @@
+package Cards.Treasures;
+
+import Common.Selectable;
+import Person.Person;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,14 +15,12 @@ public class OneTimeTreasureCardsProvider {
         magic_rocket.setPlay(new OneTimePlay() {
             @Override
             public void Play(OneTimeTreasureCard card, Selectable target) {
-                Person2 person2 = (Person2) target;
-                person2.power += 5;
+                target.changePower(5);
             }
 
             @Override
             public void Leave(OneTimeTreasureCard card, Selectable target) {
-                Person2 person2 = (Person2) target;
-                person2.power -= 5;
+                target.changePower(-5);
             }
         });
         cards.add(magic_rocket);
@@ -26,12 +29,12 @@ public class OneTimeTreasureCardsProvider {
         magic_rocket.setPlay(new OneTimePlay() {
             @Override
             public void Play(OneTimeTreasureCard card, Selectable target) {
-                Person2 person2 = (Person2) target;
-                person2.level++;
+                ((Person) target).increaseLevel(1);
             }
 
             @Override
             public void Leave(OneTimeTreasureCard card, Selectable target) {
+                ((Person) target).decreaseLevel(1);
             }
         });
         cards.add(enlightenment);

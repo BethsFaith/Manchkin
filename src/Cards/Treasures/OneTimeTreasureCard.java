@@ -1,8 +1,14 @@
+package Cards.Treasures;
+import Cards.TreasureCard;
+import Common.Selectable;
+
 public class OneTimeTreasureCard extends TreasureCard {
-    public OneTimeTreasureCard(String name, int price){
+    public OneTimeTreasureCard(String name, int price) {
+        super(Type.ONE_TIME);
         setName(name);
         setPrice(price);
     }
+
     @Override
     public void Play(Selectable target) {
         play.Play(this, target);

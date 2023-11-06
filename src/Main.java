@@ -1,5 +1,6 @@
 import Person.Person;
 import Cards.*;
+import Cards.Treasures.*;
 
 public class Main {
     public static void main(String[] args) {

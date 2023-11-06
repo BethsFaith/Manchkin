@@ -17,7 +17,7 @@ public class MonsterProvider implements Deck.Provider {
         races.add(Person.Race.halfling);
         MonsterPlay bigFootPlay = RaceBonusPlay(races, 3);
         MonsterCatch bigFootCatch = enemy -> {
-            enemy.setHelmet(null);
+            enemy.helmet = null;
         };
 
         Monster bigFoot = new Monster(12, 3);
