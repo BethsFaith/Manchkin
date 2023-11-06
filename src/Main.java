@@ -1,3 +1,8 @@
+import Person.Person;
+import Cards.Monster.Monster;
+import Cards.Monster.MonsterCatch;
+import Cards.Monster.MonsterPlay;
+
 public class Main {
     public static void main(String[] args) {
         // пример карты Бигфута

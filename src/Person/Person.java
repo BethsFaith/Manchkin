@@ -1,3 +1,7 @@
+package Person;
+
+import Common.Selectable;
+
 public class Person implements Selectable {
     public enum Race{    //раса персонажа
         elf,            //эльф

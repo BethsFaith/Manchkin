@@ -1,3 +1,5 @@
+package Cards;
+
 public abstract class DoorCard extends Card {
     public enum Type {
         CURSE,
