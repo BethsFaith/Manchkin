@@ -1,26 +1,45 @@
 package Cards;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Deck {
+    public Deck() {
+        providers = new ArrayList<>();
+    }
+
     public interface Provider {
         ArrayList<Card> GetCards();
     }
 
-    public List<Card> GetCards() {
-        ArrayList<Card> cards = new ArrayList<Card>();
+    public void initCards() {
+        cards = new ArrayList<>();
 
         for (Provider deckProvider : providers) {
             cards.addAll(deckProvider.GetCards());
         }
+    }
 
-        return cards;
+    public Card pullCard() {
+        if (!cards.isEmpty()) {
+            var card = cards.get(0);
+            cards.remove(0);
+            return card;
+        } else
+            return null;
+    }
+
+    public Boolean isEmpty() {
+        return cards.isEmpty();
     }
 
     public void addDeckProvider(Provider provider) {
         providers.add(provider);
     }
 
-    private List<Provider> providers;
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
+    private final ArrayList<Provider> providers;
+    private ArrayList<Card> cards;
 }

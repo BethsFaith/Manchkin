@@ -6,6 +6,8 @@ import Person.Person;
 
 public class Monster extends DoorCard {
     public Monster(Integer level, Integer treasures_count) {
+        super(Type.MONSTER);
+
         this.level = level;
         this.bonus = 0;
         this.treasures_count = treasures_count;

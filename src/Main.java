@@ -1,8 +1,17 @@
+import Person.Person;
+import Cards.*;
+
 public class Main {
     public static void main(String[] args) {
-//        Person person = new Person();
-//        person.setRace(Person.Race.dwarf);
-//        bigFoot.Play(person);
-//        bigFoot.Leave(person);
+        DeckManager deckManager = new DeckManager();
+        var doorDeck = deckManager.getDoorDeck();
+        var cards = doorDeck.getCards();
+
+        Person person = new Person();
+        person.setRace(Person.Race.dwarf);
+        for (var card : cards) {
+            card.Play(person);
+            card.Leave(person);
+        }
     }
 }

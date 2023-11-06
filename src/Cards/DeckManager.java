@@ -6,8 +6,10 @@ public class DeckManager {
     public DeckManager() {
         door_deck = new Deck();
         door_deck.addDeckProvider(new MonsterProvider());
+        door_deck.initCards();
 
         treasure_deck = new Deck();
+        treasure_deck.initCards();
     }
 
     public Deck getDoorDeck() {

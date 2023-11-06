@@ -8,6 +8,12 @@ public abstract class DoorCard extends Card {
         SPECIALIZATION, // класс персонажа
         BATTLE
     }
+
+    public DoorCard(Type type) {
+        super(ShirtType.DOOR);
+
+        this.type = type;
+    }
     public Type getType() {
         return type;
     }
