@@ -13,16 +13,22 @@ public class Monster extends DoorCard {
 
     @Override
     public void Play(Selectable target) {
-        play.Play(this, (Person)target);
+        if (play != null) {
+            play.Play(this, (Person)target);
+        }
     }
 
     @Override
     public void Leave(Selectable target) {
-        play.Reverse(this, (Person)target);
+        if (play != null) {
+            play.Reverse(this, (Person)target);
+        }
     }
 
     public void Catch(Selectable target) {
-        catch_up.Catch((Person)target);
+        if (catch_up != null) {
+            catch_up.Catch((Person)target);
+        }
     }
 
     public Integer GetStrength() {
@@ -53,7 +59,7 @@ public class Monster extends DoorCard {
     private Integer bonus;
     private final Integer treasures_count;
 
-    private MonsterPlay play;     // проверка условий (возможно что класс/раса персонажа дадут монстру бонус)
-    private MonsterCatch catch_up; // непотребство
+    private MonsterPlay play = null;      // проверка условий (возможно что класс/раса персонажа дадут монстру бонус)
+    private MonsterCatch catch_up = null; // непотребство
 }
 
