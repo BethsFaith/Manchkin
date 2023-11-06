@@ -1,3 +1,5 @@
+package Cards;
+
 public abstract class TreasureCard extends Card {
     public enum Type {
         ONE_TIME, // шмотка

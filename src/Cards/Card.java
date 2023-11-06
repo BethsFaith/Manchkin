@@ -1,3 +1,7 @@
+package Cards;
+
+import Common.Selectable;
+
 public abstract class Card {
     public abstract void Play(Selectable target);
     public abstract void Leave(Selectable target);

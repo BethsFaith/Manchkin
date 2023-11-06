@@ -1,3 +1,9 @@
+package Cards.Monster;
+
+import Cards.DoorCard;
+import Common.Selectable;
+import Person.Person;
+
 public class Monster extends DoorCard {
     public Monster(Integer level, Integer treasures_count) {
         this.level = level;
