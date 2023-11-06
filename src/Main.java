@@ -13,5 +13,6 @@ public class Main {
             card.Play(person);
             card.Leave(person);
         }
+        System.out.println(WearableTreasureCardsProvider.getAllOneTimeCards());
     }
 }
