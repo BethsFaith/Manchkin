@@ -27,6 +27,14 @@ public class Monster extends DoorCard {
         return treasures_count;
     }
 
+    public void setPlay(MonsterPlay play) {
+        this.play = play;
+    }
+
+    public void setCatchUp(MonsterCatch catch_up) {
+        this.catch_up = catch_up;
+    }
+
     public void AddBonus(Integer bonus) {
         this.bonus += bonus;
     }

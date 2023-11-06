@@ -14,6 +14,9 @@ public class Person implements Selectable {
         warrior,        //воин
         none            //пусто
     }
+
+    public static class ArmorHelmet {}
+
     @Override
     public void select() {
 
@@ -35,6 +38,12 @@ public class Person implements Selectable {
         this.cur_class = cur_class;
     }
 
+    public void setHelmet(ArmorHelmet helmet) {
+        this.helmet = helmet;
+    }
+
     Race race;          //текущая раса
     Class cur_class;    //текущий класс
+
+    ArmorHelmet helmet;  //шлем
 }
