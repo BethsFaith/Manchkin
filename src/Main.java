@@ -22,5 +22,10 @@ public class Main {
         Monster bigFoot = new Monster(12, 3);
         bigFoot.setPlay(monsterPlay);
         bigFoot.setCatchUp(catchUp);
+
+        Person person = new Person();
+        person.setRace(Person.Race.dwarf);
+        bigFoot.Play(person);
+        bigFoot.Leave(person);
     }
 }
