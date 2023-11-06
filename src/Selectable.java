@@ -1,3 +1,3 @@
-public interface Selectable {
-    public void select();
+public abstract class Selectable {
+    public abstract void select();
 }
