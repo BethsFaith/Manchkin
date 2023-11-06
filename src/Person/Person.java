@@ -30,6 +30,10 @@ public class Person implements Selectable {
         return race;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
     public void setRace(Race race) {
         this.race = race;
     }
@@ -45,9 +49,21 @@ public class Person implements Selectable {
     public void setHelmet(ArmorHelmet helmet) {
         this.helmet = helmet;
     }
+    
+    public void decreaseLevel(int points) {
+        // понизить уровень на заданный points, проверить чтобы левел не был ниже начального(1)
+    }
 
-    Race race;          //текущая раса
-    Class cur_class;    //текущий класс
+    public void increaseLevel(int points) {
+        // повысить уровень на заданный points, проверить чтобы левел не был выше 10
+    }
 
-    ArmorHelmet helmet;  //шлем
+    public void resetLevel(){
+        // сбросить уровень до начальноого
+    }
+
+    Race race;          // текущая раса
+    Class cur_class;    // текущий класс
+    ArmorHelmet helmet; // шлем
+    int level;          // текущий уровень
 }

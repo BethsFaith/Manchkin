@@ -6,11 +6,15 @@ public abstract class TreasureCard extends Card {
         WEARABLE // шмотка
     }
 
-    public DoorCard.Type getType() {
+    public TreasureCard(Type type) {
+        super(ShirtType.TREASURE);
+    }
+
+    public Type getType() {
         return type;
     }
 
-    public void setType(DoorCard.Type type) {
+    public void setType(Type type) {
         this.type = type;
     }
 
@@ -22,6 +26,6 @@ public abstract class TreasureCard extends Card {
         this.price = price;
     }
 
-    private DoorCard.Type type;
+    private Type type;
     private Integer price;
 }
