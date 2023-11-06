@@ -1,4 +1,4 @@
-public abstract class DoorCard {
+public abstract class DoorCard extends Card {
     public enum Type {
         CURSE,
         MONSTER,
