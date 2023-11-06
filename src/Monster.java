@@ -1,8 +1,8 @@
 public class Monster extends DoorCard {
-    public Monster(Integer level, Integer treasuresCount) {
+    public Monster(Integer level, Integer treasures_count) {
         this.level = level;
         this.bonus = 0;
-        this.treasuresCount = treasuresCount;
+        this.treasures_count = treasures_count;
     }
 
     @Override
@@ -16,7 +16,7 @@ public class Monster extends DoorCard {
     }
 
     public void Catch(Selectable target) {
-        catchUp.Catch((Person)target);
+        catch_up.Catch((Person)target);
     }
 
     public Integer GetStrength() {
@@ -24,18 +24,22 @@ public class Monster extends DoorCard {
     }
 
     public Integer getTreasuresCount() {
-        return treasuresCount;
+        return treasures_count;
     }
 
     public void AddBonus(Integer bonus) {
         this.bonus += bonus;
     }
 
+    public void ClearBonuses() {
+        this.bonus = 0;
+    }
+
     private final Integer level;
     private Integer bonus;
-    private final Integer treasuresCount;
+    private final Integer treasures_count;
 
     private MonsterPlay play;     // проверка условий (возможно что класс/раса персонажа дадут монстру бонус)
-    private MonsterCatch catchUp; // непотребство
+    private MonsterCatch catch_up; // непотребство
 }
 
