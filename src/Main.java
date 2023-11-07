@@ -14,6 +14,19 @@ public class Main {
             card.Play(person);
             card.Leave(person);
         }
-        System.out.println(WearableTreasureCardsProvider.getAllOneTimeCards());
+        System.out.println(WearableTreasureCardsProvider.getAllWearableCards());
+
+        for (var obj: WearableTreasureCardsProvider.getAllWearableCards()) {
+            obj.Play(person);
+            person.Calculate_Total_Damage();
+            System.out.printf("Суммарная сила %d\n", person.getTotal_damage());
+        }
+
+        for (var obj: OneTimeTreasureCardsProvider.getAllOneTimeCards()) {
+            obj.Play(person);
+            person.Calculate_Total_Damage();
+            System.out.printf("Суммарная сила %d\n", person.getTotal_damage());
+            System.out.printf("Уровень %d\n", person.getLevel());
+        }
     }
 }

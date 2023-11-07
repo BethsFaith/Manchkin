@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OneTimeTreasureCardsProvider {
-    public List<OneTimeTreasureCard> getAllOneTimeCards() {
+    static public List<OneTimeTreasureCard> getAllOneTimeCards() {
 
         List<OneTimeTreasureCard> cards = new ArrayList<>();
 
@@ -15,6 +15,7 @@ public class OneTimeTreasureCardsProvider {
         magic_rocket.setPlay(new OneTimePlay() {
             @Override
             public void Play(OneTimeTreasureCard card, Selectable target) {
+                System.out.printf("Играю %s\n", card.getName());
                 target.changePower(5);
             }
 
@@ -26,9 +27,10 @@ public class OneTimeTreasureCardsProvider {
         cards.add(magic_rocket);
 
         OneTimeTreasureCard enlightenment = new OneTimeTreasureCard("Достигни просветления", 0);
-        magic_rocket.setPlay(new OneTimePlay() {
+        enlightenment.setPlay(new OneTimePlay() {
             @Override
             public void Play(OneTimeTreasureCard card, Selectable target) {
+                System.out.printf("Играю %s\n", card.getName());
                 ((Person) target).increaseLevel(1);
             }
 

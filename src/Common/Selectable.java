@@ -5,5 +5,5 @@ public abstract class Selectable {
     public void changePower(int power_changes) {
         power += power_changes;
     }
-    int power;
+    protected int power;
 }

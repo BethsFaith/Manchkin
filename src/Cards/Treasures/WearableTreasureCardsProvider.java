@@ -8,14 +8,16 @@ import Gear.WeaponGear;
 import Person.Person;
 
 public class WearableTreasureCardsProvider {
-    static public List<WearableTreasureCard> getAllOneTimeCards() {
+    static public List<WearableTreasureCard> getAllWearableCards() {
         List<WearableTreasureCard> cards = new ArrayList<>();
 
         WearableTreasureCard tights = new ArmorWearableTreasureCard("Колготы великанской силы", 600, new ArmorGear(3, false, ArmorGear.Slot.Other));
         tights.setPlay(new WearablePlay() {
             @Override
             public void Wear(WearableTreasureCard wearable, Person target) {
+                System.out.printf("Надеваю %s\n", wearable.getName());
                 if (target.getCur_class() == Person.Class.warrior) {
+                    System.out.println("ТЫ ВОИН АХАХАХАХАХАХ");
                     return;
                 }
                 ((ArmorWearableTreasureCard) wearable).wearArmor(target);
@@ -32,7 +34,9 @@ public class WearableTreasureCardsProvider {
         cheese.setPlay(new WearablePlay() {
             @Override
             public void Wear(WearableTreasureCard wearable, Person target) {
+                System.out.printf("Надеваю %s\n", wearable.getName());
                 if (target.getCur_class() != Person.Class.cleric) {
+                    System.out.println("ТЫ ДАЖЕ НЕ КЛЕРИК");
                     return;
                 }
                 ((WeaponWearableTreasureCard) wearable).addWeapon(target);
@@ -49,7 +53,9 @@ public class WearableTreasureCardsProvider {
         bandana.setPlay(new WearablePlay() {
             @Override
             public void Wear(WearableTreasureCard wearable, Person target) {
+                System.out.printf("Надеваю %s\n", wearable.getName());
                 if (target.getRace() != Person.Race.human) {
+                    System.out.println("ТЫ ДАЖЕ НЕ ЧЕЛОВЕК");
                     return;
                 }
                 ((ArmorWearableTreasureCard) wearable).wearArmor(target);
@@ -66,6 +72,7 @@ public class WearableTreasureCardsProvider {
         leather_armor.setPlay(new WearablePlay() {
             @Override
             public void Wear(WearableTreasureCard wearable, Person target) {
+                System.out.printf("Надеваю %s\n", wearable.getName());
                 ((ArmorWearableTreasureCard) wearable).wearArmor(target);
             }
 
