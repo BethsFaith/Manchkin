@@ -1,7 +1,10 @@
-package Cards.Doors.Monster;
+package Cards.Providers;
 
 import Cards.Card;
 import Cards.Deck;
+import Cards.Doors.Monster.Monster;
+import Cards.Doors.Monster.MonsterCatch;
+import Cards.Doors.Monster.MonsterPlay;
 import Person.Person;
 
 import java.util.ArrayList;

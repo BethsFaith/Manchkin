@@ -1,15 +1,21 @@
-package Cards.Treasures.WearableCards;
+package Cards.Providers;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import Cards.Card;
+import Cards.Deck;
+import Cards.Treasures.WearableCards.ArmorWearableTreasureCard;
+import Cards.Treasures.WearableCards.WeaponWearableTreasureCard;
+import Cards.Treasures.WearableCards.WearablePlay;
+import Cards.Treasures.WearableCards.WearableTreasureCard;
 import Gear.ArmorGear;
 import Gear.WeaponGear;
 import Person.Person;
 
-public class WearableTreasureCardsProvider {
-    static public List<WearableTreasureCard> getAllWearableCards() {
-        List<WearableTreasureCard> cards = new ArrayList<>();
+public class WearableTreasureCardsProvider  implements Deck.Provider{
+    public ArrayList<Card> GetCards() {
+        ArrayList<Card> cards = new ArrayList<>();
 
         WearableTreasureCard tights = new ArmorWearableTreasureCard("Колготы великанской силы", 600, new ArmorGear(3, false, ArmorGear.Slot.Other));
         tights.setPlay(new WearablePlay() {

@@ -1,5 +1,6 @@
-import Cards.Treasures.WearableCards.WearableTreasureCardsProvider;
-import Cards.Treasures.OneTimePlayCards.OneTimeTreasureCardsProvider;
+import Cards.Providers.CursesCardProvider;
+import Cards.Providers.WearableTreasureCardsProvider;
+import Cards.Providers.OneTimeTreasureCardsProvider;
 import Person.Person;
 import Cards.*;
 
@@ -15,19 +16,29 @@ public class Main {
             card.Play(person);
             card.Leave(person);
         }
-        System.out.println(WearableTreasureCardsProvider.getAllWearableCards());
+        WearableTreasureCardsProvider wearableTreasureCardsProvider = new WearableTreasureCardsProvider();
 
-        for (var obj: WearableTreasureCardsProvider.getAllWearableCards()) {
+        for (var obj : wearableTreasureCardsProvider.GetCards()) {
             obj.Play(person);
             person.Calculate_Total_Damage();
             System.out.printf("Суммарная сила %d\n", person.getTotal_damage());
         }
 
-        for (var obj: OneTimeTreasureCardsProvider.getAllOneTimeCards()) {
+        OneTimeTreasureCardsProvider oneTimeTreasureCardsProvider = new OneTimeTreasureCardsProvider();
+        for (var obj : oneTimeTreasureCardsProvider.GetCards()) {
             obj.Play(person);
             person.Calculate_Total_Damage();
             System.out.printf("Суммарная сила %d\n", person.getTotal_damage());
             System.out.printf("Уровень %d\n", person.getLevel());
+        }
+
+        var cursesCardProvider = new CursesCardProvider();
+        for (var obj : cursesCardProvider.GetCards()) {
+            obj.Play(person);
+            person.Calculate_Total_Damage();
+            System.out.printf("Суммарная сила %d\n", person.getTotal_damage());
+            System.out.printf("Уровень %d\n", person.getLevel());
+            System.out.printf("Расы %s\n", person.getRace());
         }
     }
 }
