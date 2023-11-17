@@ -1,4 +1,4 @@
-package Cards.Treasures;
+package Cards.Treasures.OneTimePlayCards;
 
 import Common.Selectable;
 import Person.Person;

@@ -1,6 +1,7 @@
+import Cards.Treasures.WearableCards.WearableTreasureCardsProvider;
+import Cards.Treasures.OneTimePlayCards.OneTimeTreasureCardsProvider;
 import Person.Person;
 import Cards.*;
-import Cards.Treasures.*;
 
 public class Main {
     public static void main(String[] args) {

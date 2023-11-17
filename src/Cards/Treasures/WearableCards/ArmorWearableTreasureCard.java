@@ -1,5 +1,6 @@
-package Cards.Treasures;
+package Cards.Treasures.WearableCards;
 
+import Cards.Treasures.WearableCards.WearableTreasureCard;
 import Gear.ArmorGear;
 import Person.Person;
 
@@ -9,7 +10,7 @@ public class ArmorWearableTreasureCard extends WearableTreasureCard {
         this.gear = gear;
     }
 
-    boolean wearArmor(Person target) {
+    public boolean wearArmor(Person target) {
         switch (gear.getSlot()) {
             case Helmet -> {
                 if (target.helmet != null) {
@@ -34,7 +35,7 @@ public class ArmorWearableTreasureCard extends WearableTreasureCard {
         return true;
     }
 
-    boolean unWearArmor(Person target) {
+    public boolean unWearArmor(Person target) {
         switch (gear.getSlot()) {
             case Helmet -> target.helmet = null;
             case Body -> target.body = null;

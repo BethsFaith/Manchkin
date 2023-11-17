@@ -1,5 +1,5 @@
-package Cards.Treasures;
-import Cards.TreasureCard;
+package Cards.Treasures.OneTimePlayCards;
+import Cards.Treasures.TreasureCard;
 import Common.Selectable;
 
 public class OneTimeTreasureCard extends TreasureCard {

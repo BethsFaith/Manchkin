@@ -1,4 +1,4 @@
-package Cards.Monster;
+package Cards.Doors.Monster;
 
 import Person.Person;
 

@@ -1,5 +1,5 @@
-package Cards.Treasures;
-import Cards.TreasureCard;
+package Cards.Treasures.WearableCards;
+import Cards.Treasures.TreasureCard;
 import Common.Selectable;
 import Person.Person;
 

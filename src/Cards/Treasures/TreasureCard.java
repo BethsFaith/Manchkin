@@ -1,4 +1,6 @@
-package Cards;
+package Cards.Treasures;
+
+import Cards.Card;
 
 public abstract class TreasureCard extends Card {
     public enum Type {

@@ -1,4 +1,6 @@
-package Cards;
+package Cards.Doors;
+
+import Cards.Card;
 
 public abstract class DoorCard extends Card {
     public enum Type {

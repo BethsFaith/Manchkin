@@ -1,4 +1,4 @@
-package Cards.Treasures;
+package Cards.Treasures.WearableCards;
 import Person.Person;
 public interface WearablePlay {
     void Wear(WearableTreasureCard wearable, Person target);
