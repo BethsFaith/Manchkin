@@ -1,6 +1,6 @@
-package Cards.Monster;
+package Cards.Doors.Monster;
 
-import Cards.DoorCard;
+import Cards.Doors.DoorCard;
 import Common.Selectable;
 import Person.Person;
 

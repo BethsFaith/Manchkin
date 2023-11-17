@@ -1,6 +1,6 @@
 package Cards;
 
-import Cards.Monster.MonsterProvider;
+import Cards.Doors.Monster.MonsterProvider;
 
 public class DeckManager {
     public DeckManager() {

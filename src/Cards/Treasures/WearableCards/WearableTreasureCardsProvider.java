@@ -1,4 +1,4 @@
-package Cards.Treasures;
+package Cards.Treasures.WearableCards;
 
 import java.util.ArrayList;
 import java.util.List;

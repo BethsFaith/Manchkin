@@ -1,4 +1,4 @@
-package Cards.Treasures;
+package Cards.Treasures.WearableCards;
 import Person.Person;
 import Gear.WeaponGear;
 public class WeaponWearableTreasureCard extends WearableTreasureCard {
