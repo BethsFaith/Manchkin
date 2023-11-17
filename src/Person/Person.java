@@ -72,6 +72,9 @@ public class Person extends Selectable {
 
     public void decreaseLevel(int points) {
         // понизить уровень на заданный points, проверить чтобы левел не был ниже начального(1)
+        if (level > 1) {
+            --level;
+        }
     }
 
     public void increaseLevel(int points) {

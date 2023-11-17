@@ -8,7 +8,7 @@ public class WeaponWearableTreasureCard extends WearableTreasureCard {
         this.gear = gear;
     }
 
-    boolean addWeapon(Person person) {
+    public boolean addWeapon(Person person) {
         if (person.hand_size + gear.getSize().getNum() > 2)
             return false;
 
@@ -17,7 +17,7 @@ public class WeaponWearableTreasureCard extends WearableTreasureCard {
         return true;
     }
 
-    boolean removeWeapon(Person person) {
+    public boolean removeWeapon(Person person) {
         person.weapons.remove(gear);
         person.hand_size -= gear.getSize().getNum();
         return true;

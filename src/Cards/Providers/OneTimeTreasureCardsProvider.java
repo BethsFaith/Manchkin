@@ -1,15 +1,19 @@
-package Cards.Treasures.OneTimePlayCards;
+package Cards.Providers;
 
+import Cards.Card;
+import Cards.Deck;
+import Cards.Treasures.OneTimePlayCards.OneTimePlay;
+import Cards.Treasures.OneTimePlayCards.OneTimeTreasureCard;
 import Common.Selectable;
 import Person.Person;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OneTimeTreasureCardsProvider {
-    static public List<OneTimeTreasureCard> getAllOneTimeCards() {
+public class OneTimeTreasureCardsProvider implements Deck.Provider {
+    public ArrayList<Card> GetCards() {
 
-        List<OneTimeTreasureCard> cards = new ArrayList<>();
+        ArrayList<Card> cards = new ArrayList<>();
 
         OneTimeTreasureCard magic_rocket = new OneTimeTreasureCard("Ракета магического назначения", 300);
         magic_rocket.setPlay(new OneTimePlay() {
