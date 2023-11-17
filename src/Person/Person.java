@@ -5,7 +5,7 @@ import Common.Selectable;
 
 import java.util.ArrayList;
 
-public class Person extends Selectable {
+public class Person implements Selectable {
     public enum Race {    //раса персонажа
         elf,            //эльф
         halfling,       //халфлинг
@@ -24,12 +24,12 @@ public class Person extends Selectable {
         ;
     }
 
-    public static class ArmorHelmet {
-    }
+    @Override
+    public void select() {}
 
     @Override
-    public void select() {
-
+    public void changePower(int power_changes) {
+        power += power_changes;
     }
 
     public Race getRace() {
@@ -100,4 +100,5 @@ public class Person extends Selectable {
     Class cur_class;    // текущий класс
     int level;          // текущий уровень
     private int total_damage;
+    private int power;
 }

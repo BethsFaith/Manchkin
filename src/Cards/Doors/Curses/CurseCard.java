@@ -15,7 +15,7 @@ public class CurseCard extends DoorCard {
         if (target instanceof Person) {
             play.Play(this, (Person) target);
         } else {
-            System.out.print("Target not a person %d\n");
+            System.out.println("Target not a person");
         }
     }
 
@@ -24,7 +24,7 @@ public class CurseCard extends DoorCard {
         if (target instanceof Person) {
             play.Leave(this, (Person) target);
         } else {
-            System.out.print("Target not a person %d\n");
+            System.out.println("Target not a person");
         }
     }
 

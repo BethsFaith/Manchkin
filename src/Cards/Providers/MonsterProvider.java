@@ -24,6 +24,7 @@ public class MonsterProvider implements Deck.Provider {
         };
 
         Monster bigFoot = new Monster(12, 3);
+        bigFoot.setName("Бигфут");
         bigFoot.setPlay(bigFootPlay);
         bigFoot.setCatchUp(bigFootCatch);
         cards.add(bigFoot);
@@ -38,6 +39,7 @@ public class MonsterProvider implements Deck.Provider {
             enemy.setRace(null);
         };
         Monster gic = new Monster(6, 2);
+        gic.setName("Гикающий гик");
         gic.setPlay(gicPlay);
         gic.setCatchUp(gicCatch);
         cards.add(gic);
@@ -49,6 +51,7 @@ public class MonsterProvider implements Deck.Provider {
             }
         };
         Monster brothers = new Monster(16, 4);
+        brothers.setName("Братья");
         brothers.setCatchUp(brothersCatch);
 
         cards.add(brothers);
@@ -61,6 +64,7 @@ public class MonsterProvider implements Deck.Provider {
             enemy.decreaseLevel(-1);
         };
         Monster beauty = new Monster(1, 1);
+        beauty.setName("Крысавица");
         beauty.setPlay(beautyPlay);
         beauty.setCatchUp(beautyCatch);
 
