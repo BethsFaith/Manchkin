@@ -1,6 +1,6 @@
-import Cards.Providers.CursesCardProvider;
-import Cards.Providers.WearableTreasureCardsProvider;
-import Cards.Providers.OneTimeTreasureCardsProvider;
+import Cards.Doors.Monster.Monster;
+import Cards.Providers.*;
+import Common.Selectable;
 import Person.Person;
 import Cards.*;
 
@@ -39,6 +39,24 @@ public class Main {
             System.out.printf("Суммарная сила %d\n", person.getTotal_damage());
             System.out.printf("Уровень %d\n", person.getLevel());
             System.out.printf("Расы %s\n", person.getRace());
+        }
+
+
+        var monsters = new MonsterProvider();
+
+        var test_monster = (Monster) monsters.GetCards().get(0);
+
+        var monsterBuffs = new MonsterBuffsProvider();
+
+        System.out.printf("Монстр %s\n", test_monster.getName());
+        System.out.printf("Суммарная сила монстра %d\n", test_monster.GetStrength());
+        System.out.printf("Сокровища за монстра %d\n", test_monster.getTreasuresCount());
+
+        for (var obj : monsterBuffs.GetCards()) {
+            obj.Play(test_monster);
+            System.out.printf("Монстр %s\n", test_monster.getName());
+            System.out.printf("Суммарная сила монстра %d\n", test_monster.GetStrength());
+            System.out.printf("Сокровища за монстра %d\n", test_monster.getTreasuresCount());
         }
     }
 }
