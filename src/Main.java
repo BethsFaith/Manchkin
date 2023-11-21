@@ -1,9 +1,10 @@
 import BattleField.BattleField;
+import Cards.DeckManager;
+import Cards.Doors.Classes.ClassCard;
 import Cards.Doors.Monster.Monster;
 import Cards.Doors.Races.RaceCard;
 import Cards.Providers.*;
 import Person.Person;
-import Cards.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -59,15 +60,26 @@ public class Main {
             System.out.printf("Сокровища за монстра %d\n", test_monster.getTreasuresCount());
         }
 
-        RaceCard card = new RaceCard(Person.Race.elf);
-        card.setName("Эльф");
+        RaceCard raceCard = new RaceCard(Person.Race.elf);
+        raceCard.setName("Эльф");
         System.out.printf("Раса игрока %s\n", person.getRace());
-        System.out.printf("Карта %s play на игрока\n", card.getName());
-        card.Play(person);
+        System.out.printf("Карта %s play на игрока\n", raceCard.getName());
+        raceCard.Play(person);
         System.out.printf("Раса игрока %s\n", person.getRace());
-        System.out.printf("Карта %s leave\n", card.getName());
-        card.Leave(person);
+        System.out.printf("Карта %s leave\n", raceCard.getName());
+        raceCard.Leave(person);
         System.out.printf("Раса игрока %s\n", person.getRace());
+
+        person.setCur_class(Person.Class.none);
+        ClassCard classCard = new ClassCard(Person.Class.cleric);
+        classCard.setName("Клирик");
+        System.out.printf("Класс игрока %s\n", person.getCur_class());
+        System.out.printf("Карта %s play на игрока\n", classCard.getName());
+        classCard.Play(person);
+        System.out.printf("Класс игрока %s\n", person.getCur_class());
+        System.out.printf("Карта %s leave\n", classCard.getName());
+        classCard.Leave(person);
+        System.out.printf("Класс игрока %s\n", person.getCur_class());
 
         BattleField battleField = new BattleField();
         battleField.MonsterSide.Participants.add(test_monster);

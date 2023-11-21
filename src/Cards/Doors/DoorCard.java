@@ -7,7 +7,7 @@ public abstract class DoorCard extends Card {
         CURSE,
         MONSTER,
         RACE,
-        SPECIALIZATION, // класс персонажа
+        CLASS,
         BATTLE
     }
 
