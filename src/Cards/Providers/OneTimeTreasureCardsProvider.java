@@ -8,7 +8,6 @@ import Common.Selectable;
 import Person.Person;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class OneTimeTreasureCardsProvider implements Deck.Provider {
     public ArrayList<Card> GetCards() {
@@ -20,12 +19,12 @@ public class OneTimeTreasureCardsProvider implements Deck.Provider {
             @Override
             public void Play(OneTimeTreasureCard card, Selectable target) {
                 System.out.printf("Играю %s\n", card.getName());
-                target.changePower(5);
+                target.ChangePower(5);
             }
 
             @Override
             public void Leave(OneTimeTreasureCard card, Selectable target) {
-                target.changePower(-5);
+                target.ChangePower(-5);
             }
         });
         cards.add(magic_rocket);
