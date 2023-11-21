@@ -25,10 +25,10 @@ public class Person implements Selectable {
     }
 
     @Override
-    public void select() {}
+    public void Select() {}
 
     @Override
-    public void changePower(int power_changes) {
+    public void ChangePower(int power_changes) {
         power += power_changes;
     }
 
@@ -86,7 +86,8 @@ public class Person implements Selectable {
         // сбросить уровень до начальноого
     }
 
-    public int getTotal_damage() {
+    @Override
+    public Integer GetPower() {
         return total_damage;
     }
 
