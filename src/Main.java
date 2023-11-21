@@ -1,5 +1,6 @@
 import BattleField.BattleField;
 import Cards.Doors.Monster.Monster;
+import Cards.Doors.Races.RaceCard;
 import Cards.Providers.*;
 import Person.Person;
 import Cards.*;
@@ -41,7 +42,6 @@ public class Main {
             System.out.printf("Расы %s\n", person.getRace());
         }
 
-
         var monsters = new MonsterProvider();
 
         var test_monster = (Monster) monsters.GetCards().get(0);
@@ -58,6 +58,16 @@ public class Main {
             System.out.printf("Суммарная сила монстра %d\n", test_monster.GetPower());
             System.out.printf("Сокровища за монстра %d\n", test_monster.getTreasuresCount());
         }
+
+        RaceCard card = new RaceCard(Person.Race.elf);
+        card.setName("Эльф");
+        System.out.printf("Раса игрока %s\n", person.getRace());
+        System.out.printf("Карта %s play на игрока\n", card.getName());
+        card.Play(person);
+        System.out.printf("Раса игрока %s\n", person.getRace());
+        System.out.printf("Карта %s leave\n", card.getName());
+        card.Leave(person);
+        System.out.printf("Раса игрока %s\n", person.getRace());
 
         BattleField battleField = new BattleField();
         battleField.MonsterSide.Participants.add(test_monster);
