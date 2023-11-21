@@ -12,7 +12,7 @@ public class BattleField {
         }
 
         public Side(Type type) {
-            this.participants = new ArrayList<>();
+            this.Participants = new ArrayList<>();
             additional_power = 0;
         }
 
@@ -24,17 +24,9 @@ public class BattleField {
             additional_power += power_points;
         }
 
-        public void AddParticipant(Selectable participant) {
-            participants.add(participant);
-        }
-
-        public void RemoveParticipant(Selectable participant) {
-            participants.remove(participant);
-        }
-
         public Integer GetPower() {
             Integer power = 0;
-            for (var participant : participants) {
+            for (var participant : Participants) {
                 power += participant.GetPower();
             }
 
@@ -47,7 +39,7 @@ public class BattleField {
             return type;
         }
 
-        private final ArrayList<Selectable> participants;
+        public final ArrayList<Selectable> Participants;
         private int additional_power;
         private Type type;
     }

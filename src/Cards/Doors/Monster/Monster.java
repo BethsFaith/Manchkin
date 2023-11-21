@@ -33,7 +33,8 @@ public class Monster extends DoorCard implements Selectable {
         }
     }
 
-    public Integer GetStrength() {
+    @Override
+    public Integer GetPower() {
         return level + bonus;
     }
 
@@ -60,11 +61,6 @@ public class Monster extends DoorCard implements Selectable {
     @Override
     public void ChangePower(int power_changes) {
         AddBonus(power_changes);
-    }
-
-    @Override
-    public Integer GetPower() {
-        return level + bonus;
     }
 
     public void AddBonus(Integer bonus) {
