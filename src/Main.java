@@ -22,14 +22,12 @@ public class Main {
 
         for (var obj : wearableTreasureCardsProvider.GetCards()) {
             obj.Play(person);
-            person.Calculate_Total_Damage();
             System.out.printf("Суммарная сила %d\n", person.GetPower());
         }
 
         OneTimeTreasureCardsProvider oneTimeTreasureCardsProvider = new OneTimeTreasureCardsProvider();
         for (var obj : oneTimeTreasureCardsProvider.GetCards()) {
             obj.Play(person);
-            person.Calculate_Total_Damage();
             System.out.printf("Суммарная сила %d\n", person.GetPower());
             System.out.printf("Уровень %d\n", person.getLevel());
         }
@@ -37,7 +35,6 @@ public class Main {
         var cursesCardProvider = new CursesCardProvider();
         for (var obj : cursesCardProvider.GetCards()) {
             obj.Play(person);
-            person.Calculate_Total_Damage();
             System.out.printf("Суммарная сила %d\n", person.GetPower());
             System.out.printf("Уровень %d\n", person.getLevel());
             System.out.printf("Расы %s\n", person.getRace());
