@@ -25,11 +25,12 @@ public class Person implements Selectable {
     }
 
     @Override
-    public void Select() {}
+    public void Select() {
+    }
 
     @Override
-    public void ChangePower(int power_changes) {
-        power += power_changes;
+    public void ChangeAdditionalPower(int power_changes) {
+        additional_power += power_changes;
     }
 
     public Race getRace() {
@@ -52,7 +53,7 @@ public class Person implements Selectable {
         this.cur_class = cur_class;
     }
 
-    public void Calculate_Total_Damage() { //высчитывает общий урон
+    private void calculate_Total_Damage() { //высчитывает общий урон
         int temp = 0;
         temp += this.level;
 
@@ -65,7 +66,7 @@ public class Person implements Selectable {
         temp += body != null ? body.getPower() : 0;
         temp += legs != null ? legs.getPower() : 0;
 
-        temp += this.power;
+        temp += this.additional_power;
 
         this.total_damage = temp;
     }
@@ -88,6 +89,7 @@ public class Person implements Selectable {
 
     @Override
     public Integer GetPower() {
+        calculate_Total_Damage();
         return total_damage;
     }
 
@@ -97,9 +99,9 @@ public class Person implements Selectable {
     public ArmorGear body;        //тело
     public ArmorGear legs;        //ноги
     public ArrayList<WearableGear> others = new ArrayList<>(); //другое снаряжение
-    Race race;          // текущая раса
-    Class cur_class;    // текущий класс
-    int level;          // текущий уровень
+    Race race = Race.human;          // текущая раса
+    Class cur_class = Class.none;    // текущий класс
+    int level = 1;          // текущий уровень
     private int total_damage;
-    private int power;
+    private int additional_power;
 }

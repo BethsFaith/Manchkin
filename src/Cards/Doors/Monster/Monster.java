@@ -9,7 +9,7 @@ public class Monster extends DoorCard implements Selectable {
         super(Type.MONSTER);
 
         this.level = level;
-        this.bonus = 0;
+        this.additional_power = 0;
         this.treasures_count = treasures_count;
     }
 
@@ -35,7 +35,7 @@ public class Monster extends DoorCard implements Selectable {
 
     @Override
     public Integer GetPower() {
-        return level + bonus;
+        return level + additional_power;
     }
 
     public Integer getTreasuresCount() {
@@ -59,21 +59,17 @@ public class Monster extends DoorCard implements Selectable {
     }
 
     @Override
-    public void ChangePower(int power_changes) {
-        AddBonus(power_changes);
-    }
-
-    public void AddBonus(Integer bonus) {
-        this.bonus += bonus;
+    public void ChangeAdditionalPower(int power_changes) {
+        this.additional_power += power_changes;
     }
 
     public void ClearBonuses() {
-        this.bonus = 0;
+        this.additional_power = 0;
     }
 
     private final Integer level;
 
-    private Integer bonus;
+    private Integer additional_power;
     private Integer treasures_count;
 
     private MonsterPlay play = null;      // проверка условий (возможно что класс/раса персонажа дадут монстру бонус)

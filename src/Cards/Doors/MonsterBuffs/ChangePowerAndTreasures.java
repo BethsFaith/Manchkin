@@ -11,13 +11,13 @@ public class ChangePowerAndTreasures implements MonsterBuffPlay {
 
     @Override
     public void Play(MonsterBuff card, Monster target) {
-        target.AddBonus(power_change);
+        target.ChangeAdditionalPower(power_change);
         target.changeTreasureCount(treasure_change);
     }
 
     @Override
     public void Leave(MonsterBuff card, Monster target) {
-        target.AddBonus(-power_change);
+        target.ChangeAdditionalPower(-power_change);
         target.changeTreasureCount(-treasure_change);
     }
 
