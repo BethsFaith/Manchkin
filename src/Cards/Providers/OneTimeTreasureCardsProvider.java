@@ -19,12 +19,12 @@ public class OneTimeTreasureCardsProvider implements Deck.Provider {
             @Override
             public void Play(OneTimeTreasureCard card, Selectable target) {
                 System.out.printf("Играю %s\n", card.getName());
-                target.ChangePower(5);
+                target.ChangeAdditionalPower(5);
             }
 
             @Override
             public void Leave(OneTimeTreasureCard card, Selectable target) {
-                target.ChangePower(-5);
+                target.ChangeAdditionalPower(-5);
             }
         });
         cards.add(magic_rocket);

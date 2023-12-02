@@ -20,7 +20,7 @@ public class BattleField {
         public void Select() {}
 
         @Override
-        public void ChangePower(int power_points) {
+        public void ChangeAdditionalPower(int power_points) {
             additional_power += power_points;
         }
 

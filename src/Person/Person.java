@@ -29,8 +29,8 @@ public class Person implements Selectable {
     }
 
     @Override
-    public void ChangePower(int power_changes) {
-        power += power_changes;
+    public void ChangeAdditionalPower(int power_changes) {
+        additional_power += power_changes;
     }
 
     public Race getRace() {
@@ -66,7 +66,7 @@ public class Person implements Selectable {
         temp += body != null ? body.getPower() : 0;
         temp += legs != null ? legs.getPower() : 0;
 
-        temp += this.power;
+        temp += this.additional_power;
 
         this.total_damage = temp;
     }
@@ -103,5 +103,5 @@ public class Person implements Selectable {
     Class cur_class = Class.none;    // текущий класс
     int level = 1;          // текущий уровень
     private int total_damage;
-    private int power;
+    private int additional_power;
 }
