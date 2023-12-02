@@ -87,13 +87,13 @@ public class MonsterProvider implements Deck.Provider {
             @Override
             public void Play(Monster monster, Person enemy) {
                 if (Condition(enemy)) {
-                    monster.AddBonus(bonus);
+                    monster.ChangeAdditionalPower(bonus);
                 }
             }
             @Override
             public void Reverse(Monster monster, Person enemy) {
                 if (Condition(enemy)) {
-                    monster.AddBonus(-bonus);
+                    monster.ChangeAdditionalPower(-bonus);
                 }
             }
         };
@@ -113,13 +113,13 @@ public class MonsterProvider implements Deck.Provider {
             @Override
             public void Play(Monster monster, Person enemy) {
                 if (Condition(enemy)) {
-                    monster.AddBonus(bonus);
+                    monster.ChangeAdditionalPower(bonus);
                 }
             }
             @Override
             public void Reverse(Monster monster, Person enemy) {
                 if (Condition(enemy)) {
-                    monster.AddBonus(-bonus);
+                    monster.ChangeAdditionalPower(-bonus);
                 }
             }
         };

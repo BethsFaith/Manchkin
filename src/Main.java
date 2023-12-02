@@ -22,25 +22,25 @@ public class Main {
 
         for (var obj : wearableTreasureCardsProvider.GetCards()) {
             obj.Play(person);
-            person.Calculate_Total_Damage();
             System.out.printf("Суммарная сила %d\n", person.GetPower());
+            System.out.println();
         }
 
         OneTimeTreasureCardsProvider oneTimeTreasureCardsProvider = new OneTimeTreasureCardsProvider();
         for (var obj : oneTimeTreasureCardsProvider.GetCards()) {
             obj.Play(person);
-            person.Calculate_Total_Damage();
             System.out.printf("Суммарная сила %d\n", person.GetPower());
             System.out.printf("Уровень %d\n", person.getLevel());
+            System.out.println();
         }
 
         var cursesCardProvider = new CursesCardProvider();
         for (var obj : cursesCardProvider.GetCards()) {
             obj.Play(person);
-            person.Calculate_Total_Damage();
             System.out.printf("Суммарная сила %d\n", person.GetPower());
             System.out.printf("Уровень %d\n", person.getLevel());
             System.out.printf("Расы %s\n", person.getRace());
+            System.out.println();
         }
 
         var monsters = new MonsterProvider();
@@ -52,12 +52,16 @@ public class Main {
         System.out.printf("Монстр %s\n", test_monster.getName());
         System.out.printf("Суммарная сила монстра %d\n", test_monster.GetPower());
         System.out.printf("Сокровища за монстра %d\n", test_monster.getTreasuresCount());
+        System.out.println();
+
 
         for (var obj : monsterBuffs.GetCards()) {
             obj.Play(test_monster);
             System.out.printf("Монстр %s\n", test_monster.getName());
             System.out.printf("Суммарная сила монстра %d\n", test_monster.GetPower());
             System.out.printf("Сокровища за монстра %d\n", test_monster.getTreasuresCount());
+            System.out.println();
+
         }
 
         RaceCard raceCard = new RaceCard(Person.Race.elf);
@@ -66,12 +70,14 @@ public class Main {
         System.out.printf("Карта %s play на игрока\n", raceCard.getName());
         raceCard.Play(person);
         System.out.printf("Раса игрока %s\n", person.getRace());
+        System.out.println();
         System.out.printf("Карта %s leave\n", raceCard.getName());
         raceCard.Leave(person);
         System.out.printf("Раса игрока %s\n", person.getRace());
 
         person.setCur_class(Person.Class.none);
         ClassCard classCard = new ClassCard(Person.Class.cleric);
+        System.out.println();
         classCard.setName("Клирик");
         System.out.printf("Класс игрока %s\n", person.getCur_class());
         System.out.printf("Карта %s play на игрока\n", classCard.getName());
