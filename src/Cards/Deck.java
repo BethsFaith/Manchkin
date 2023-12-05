@@ -1,6 +1,7 @@
 package Cards;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck {
     public Deck() {
@@ -17,6 +18,7 @@ public class Deck {
         for (Provider deckProvider : providers) {
             cards.addAll(deckProvider.GetCards());
         }
+        Collections.shuffle(cards);
     }
 
     public Card pullCard() {

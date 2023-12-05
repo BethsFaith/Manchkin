@@ -1,11 +1,16 @@
 package Cards;
 
+import Cards.Providers.CursesCardProvider;
+import Cards.Providers.MonsterBuffsProvider;
 import Cards.Providers.MonsterProvider;
 
 public class DeckManager {
     public DeckManager() {
         door_deck = new Deck();
         door_deck.addDeckProvider(new MonsterProvider());
+        door_deck.addDeckProvider(new CursesCardProvider());
+        door_deck.addDeckProvider(new MonsterBuffsProvider());
+
         door_deck.initCards();
 
         treasure_deck = new Deck();
