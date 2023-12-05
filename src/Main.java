@@ -1,6 +1,7 @@
 import BattleField.BattleField;
 import Cards.DeckManager;
 import Cards.Doors.Classes.ClassCard;
+import Cards.Doors.DoorCard;
 import Cards.Doors.Monster.Monster;
 import Cards.Doors.Races.RaceCard;
 import Cards.Providers.*;
@@ -114,5 +115,11 @@ public class Main {
 
         var playersWin = battleField.PlayerSide.GetPower() > battleField.MonsterSide.GetPower();
         System.out.printf("Победила сторона %s\n", playersWin ? "игроков" : "монстров");
+
+        var deck = deckManager.getDoorDeck();
+        for(int i = 0; i <= 10; ++i) {
+            var testCard = (DoorCard) deck.pullCard();
+            System.out.println(testCard.getType());
+        }
     }
 }
