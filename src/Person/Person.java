@@ -116,6 +116,7 @@ public class Person implements Selectable {
     Race race = Race.human;          // текущая раса
     Class cur_class = Class.none;    // текущий класс
     int level = 1;          // текущий уровень
+
     private int total_damage; //суммарная сила
     private int additional_power; //сила из доп источников
 

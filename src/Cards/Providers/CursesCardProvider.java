@@ -144,7 +144,7 @@ public class CursesCardProvider implements Deck.Provider {
         });
 
         cards.add(rock);
-
+      
         return cards;
     }
 }

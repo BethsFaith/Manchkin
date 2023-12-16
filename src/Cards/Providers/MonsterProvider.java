@@ -133,7 +133,6 @@ public class MonsterProvider implements Deck.Provider {
             }
         });
         cards.add(kitty);
-
         var kitty_girl = new Monster("Сильная и независимая кошечка", 10, 3);
         kitty.setCatchUp(new MonsterCatch() {
             @Override
@@ -199,7 +198,6 @@ public class MonsterProvider implements Deck.Provider {
             }
         });
         cards.add(dead_horse);
-
         return cards;
     }
 

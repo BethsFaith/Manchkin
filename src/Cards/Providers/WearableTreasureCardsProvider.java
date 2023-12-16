@@ -101,6 +101,7 @@ public class WearableTreasureCardsProvider implements Deck.Provider {
 
         WearableTreasureCard sing_sword = new WearableTreasureCard("Поющий меч", 200, new WeaponGear(2, false, WeaponGear.Size.OneHand));
         sing_sword.setPlay(checkClass(Person.Class.thief, "вор"));
+        cards.add(sing_sword);
 
         return cards;
     }
