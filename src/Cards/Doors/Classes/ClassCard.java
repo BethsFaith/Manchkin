@@ -1,36 +1,45 @@
 package Cards.Doors.Classes;
 
+import Loggers.Log;
 import Cards.Doors.DoorCard;
 import Common.Selectable;
 import Person.Person;
 
+import java.util.logging.Level;
+
 public class ClassCard extends DoorCard {
-    public ClassCard(Person.Class type) {
+    public ClassCard(String name, Person.Class type) {
         super(Type.CLASS);
+        setName(name);
         this.type = type;
     }
 
     @Override
-    public void Play(Selectable target) {
-        var person = (Person)target;
-        if (person == null) {
-            return; // TODO: обсудить возврат ошибок
+    public boolean Play(Selectable person) {
+        Log.fmtGlobLog("Играем %s\n", this.getName());
+        if(!(person instanceof Person)) {
+            Log.fmtGlobLog(Level.SEVERE, "Попытка сыграть класс не на персонажа");
+            return false;
         }
-
-        person.setCur_class(type);
+        ((Person)person).setClass(type);
+        return true;
     }
 
     @Override
-    public void Leave(Selectable target) {
-        var person = (Person)target;
-        if (person == null) {
-            return; // TODO: обсудить возврат ошибок
+    public boolean Leave(Selectable person) {
+        Log.fmtGlobLog("Уходит %s\n", this.getName());
+        if(!(person instanceof Person cast)) {
+            Log.fmtGlobLog(Level.SEVERE, "Попытка сыграть снять класс не с персонажа");
+            return false;
         }
+        if (cast.getCurClass() != type) {
+            Log.fmtGlobLog(Level.SEVERE, "Класс изменен извне");
+            return false;
+        }
+        cast.setClass(Person.Class.none);
+        return true;
 
-        if (person.getCur_class() != type) {
-            return; // TODO: обсудить возврат ошибок
-        }
-        person.setCur_class(Person.Class.none);
+
     }
 
     Person.Class type;

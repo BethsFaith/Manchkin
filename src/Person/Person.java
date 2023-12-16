@@ -23,11 +23,6 @@ public class Person implements Selectable {
         none            //пусто
         ;
     }
-
-    @Override
-    public void Select() {
-    }
-
     @Override
     public void ChangeAdditionalPower(int power_changes) {
         additional_power += power_changes;
@@ -45,15 +40,15 @@ public class Person implements Selectable {
         this.race = race;
     }
 
-    public Class getCur_class() {
+    public Class getCurClass() {
         return cur_class;
     }
 
-    public void setCur_class(Class cur_class) {
+    public void setClass(Class cur_class) {
         this.cur_class = cur_class;
     }
 
-    private void calculate_Total_Damage() { //высчитывает общий урон
+    private void calculateTotalDamage() { //высчитывает общий урон
         int temp = 0;
         temp += this.level;
 
@@ -73,24 +68,43 @@ public class Person implements Selectable {
 
     public void decreaseLevel(int points) {
         // понизить уровень на заданный points, проверить чтобы левел не был ниже начального(1)
-        if (level > 1) {
+        while (points-- > 0 && level > 1) {
             --level;
         }
     }
 
     public void increaseLevel(int points) {
         // повысить уровень на заданный points, проверить чтобы левел не был выше 10
-        level += points;
+        while (points-- > 0 && level < 10) {
+            level += 1;
+        }
     }
 
     public void resetLevel() {
         // сбросить уровень до начальноого
+        level = 1;
     }
 
     @Override
     public Integer GetPower() {
-        calculate_Total_Damage();
+        calculateTotalDamage();
         return total_damage;
+    }
+
+    public boolean isHaveBig() {
+        return have_big;
+    }
+
+    public void setHaveBig(boolean have_big) {
+        this.have_big = have_big;
+    }
+
+    public int getRunawayBonus() {
+        return runaway_bonus;
+    }
+
+    public void changeRunAwayBonus(int change_value) {
+        this.runaway_bonus += change_value;
     }
 
     public ArrayList<WeaponGear> weapons = new ArrayList<>(); //оружие в руке
@@ -104,4 +118,7 @@ public class Person implements Selectable {
     int level = 1;          // текущий уровень
     private int total_damage;
     private int additional_power;
+
+    private int runaway_bonus = 0;
+    boolean have_big = false;
 }

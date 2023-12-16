@@ -11,8 +11,8 @@ public abstract class Card {
     public Card(ShirtType type) {
         shirtType = type;
     }
-    public abstract void Play(Selectable target);
-    public abstract void Leave(Selectable target);
+    public abstract boolean Play(Selectable target);
+    public abstract boolean Leave(Selectable target);
 
     public ShirtType getShirtType() {
         return shirtType;

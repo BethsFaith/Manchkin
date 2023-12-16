@@ -1,92 +1,77 @@
 package Cards.Providers;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import Cards.Card;
 import Cards.Deck;
-import Cards.Treasures.WearableCards.ArmorWearableTreasureCard;
-import Cards.Treasures.WearableCards.WeaponWearableTreasureCard;
 import Cards.Treasures.WearableCards.WearablePlay;
 import Cards.Treasures.WearableCards.WearableTreasureCard;
 import Gear.ArmorGear;
 import Gear.WeaponGear;
+import Gear.WearableGear;
 import Person.Person;
+import Loggers.Log;
 
-public class WearableTreasureCardsProvider  implements Deck.Provider{
+public class WearableTreasureCardsProvider implements Deck.Provider {
     public ArrayList<Card> GetCards() {
         ArrayList<Card> cards = new ArrayList<>();
 
-        WearableTreasureCard tights = new ArmorWearableTreasureCard("Колготы великанской силы", 600, new ArmorGear(3, false, ArmorGear.Slot.Other));
+        WearableTreasureCard tights = new WearableTreasureCard("Колготы великанской силы", 600, new ArmorGear(3, false, ArmorGear.Slot.Other));
         tights.setPlay(new WearablePlay() {
             @Override
-            public void Wear(WearableTreasureCard wearable, Person target) {
-                System.out.printf("Надеваю %s\n", wearable.getName());
-                if (target.getCur_class() == Person.Class.warrior) {
-                    System.out.println("ТЫ ВОИН АХАХАХАХАХАХ");
-                    return;
+            public boolean WearWithCheck(WearableGear wearable, Person target) {
+                if (target.getCurClass() == Person.Class.warrior) {
+                    Log.fmtGlobLog("ТЫ ВОИН АХАХАХАХАХАХ");
+                    return false;
                 }
-                ((ArmorWearableTreasureCard) wearable).wearArmor(target);
+                return wearable.wear(target);
             }
 
             @Override
-            public void UnWear(WearableTreasureCard wearable, Person target) {
-                ((ArmorWearableTreasureCard) wearable).unWearArmor(target);
+            public boolean UnWearWithCheck(WearableGear wearable, Person target) {
+                return wearable.unwear(target);
             }
         });
+        tights.Play(null);
         cards.add(tights);
 
-        WeaponWearableTreasureCard cheese = new WeaponWearableTreasureCard("Сыротерка умиротворения", 400, new WeaponGear(3, false, WeaponGear.Size.OneHand));
+        WearableTreasureCard cheese = new WearableTreasureCard("Сыротерка умиротворения", 400, new WeaponGear(3, false, WeaponGear.Size.OneHand));
         cheese.setPlay(new WearablePlay() {
             @Override
-            public void Wear(WearableTreasureCard wearable, Person target) {
-                System.out.printf("Надеваю %s\n", wearable.getName());
-                if (target.getCur_class() != Person.Class.cleric) {
-                    System.out.println("ТЫ ДАЖЕ НЕ КЛЕРИК");
-                    return;
+            public boolean WearWithCheck(WearableGear wearable, Person target) {
+                if (target.getCurClass() != Person.Class.cleric) {
+                    Log.fmtGlobLog("ТЫ ДАЖЕ НЕ КЛЕРИК");
+                    return false;
                 }
-                ((WeaponWearableTreasureCard) wearable).addWeapon(target);
+                return wearable.wear(target);
             }
 
             @Override
-            public void UnWear(WearableTreasureCard wearable, Person target) {
-                ((WeaponWearableTreasureCard) wearable).removeWeapon(target);
+            public boolean UnWearWithCheck(WearableGear wearable, Person target) {
+                return wearable.unwear(target);
             }
         });
         cards.add(cheese);
 
-        ArmorWearableTreasureCard bandana = new ArmorWearableTreasureCard("Бандана сволочизма", 400, new ArmorGear(3, false, ArmorGear.Slot.Helmet));
+        WearableTreasureCard bandana = new WearableTreasureCard("Бандана сволочизма", 400, new ArmorGear(3, false, ArmorGear.Slot.Helmet));
         bandana.setPlay(new WearablePlay() {
             @Override
-            public void Wear(WearableTreasureCard wearable, Person target) {
-                System.out.printf("Надеваю %s\n", wearable.getName());
+            public boolean WearWithCheck(WearableGear wearable, Person target) {
                 if (target.getRace() != Person.Race.human) {
-                    System.out.println("ТЫ ДАЖЕ НЕ ЧЕЛОВЕК");
-                    return;
+                    Log.fmtGlobLog("ТЫ ДАЖЕ НЕ ЧЕЛОВЕК");
+                    return false;
                 }
-                ((ArmorWearableTreasureCard) wearable).wearArmor(target);
+                return wearable.wear(target);
             }
 
             @Override
-            public void UnWear(WearableTreasureCard wearable, Person target) {
-                ((ArmorWearableTreasureCard) wearable).unWearArmor(target);
+            public boolean UnWearWithCheck(WearableGear wearable, Person target) {
+                return wearable.unwear(target);
             }
         });
         cards.add(bandana);
 
-        ArmorWearableTreasureCard leather_armor = new ArmorWearableTreasureCard("Кожаный прикид", 200, new ArmorGear(1, false, ArmorGear.Slot.Body));
-        leather_armor.setPlay(new WearablePlay() {
-            @Override
-            public void Wear(WearableTreasureCard wearable, Person target) {
-                System.out.printf("Надеваю %s\n", wearable.getName());
-                ((ArmorWearableTreasureCard) wearable).wearArmor(target);
-            }
-
-            @Override
-            public void UnWear(WearableTreasureCard wearable, Person target) {
-                ((ArmorWearableTreasureCard) wearable).unWearArmor(target);
-            }
-        });
+        WearableTreasureCard leather_armor = new WearableTreasureCard("Кожаный прикид", 200, new ArmorGear(1, false, ArmorGear.Slot.Body));
         cards.add(leather_armor);
 
         return cards;

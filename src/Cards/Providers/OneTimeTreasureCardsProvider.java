@@ -5,6 +5,7 @@ import Cards.Deck;
 import Cards.Treasures.OneTimePlayCards.OneTimePlay;
 import Cards.Treasures.OneTimePlayCards.OneTimeTreasureCard;
 import Common.Selectable;
+import Loggers.Log;
 import Person.Person;
 
 import java.util.ArrayList;
@@ -14,32 +15,34 @@ public class OneTimeTreasureCardsProvider implements Deck.Provider {
 
         ArrayList<Card> cards = new ArrayList<>();
 
-        OneTimeTreasureCard magic_rocket = new OneTimeTreasureCard("Ракета магического назначения", 300);
-        magic_rocket.setPlay(new OneTimePlay() {
+        OneTimeTreasureCard magic_rocket = new OneTimeTreasureCard("Ракета магического назначения", 300, new OneTimePlay() {
             @Override
-            public void Play(OneTimeTreasureCard card, Selectable target) {
-                System.out.printf("Играю %s\n", card.getName());
+            public boolean Play( OneTimeTreasureCard card,  Selectable target) {
+                Log.fmtGlobLog("Играю %s\n", card.getName());
                 target.ChangeAdditionalPower(5);
+                return true;
             }
 
             @Override
-            public void Leave(OneTimeTreasureCard card, Selectable target) {
+            public boolean Leave( OneTimeTreasureCard card,  Selectable target) {
                 target.ChangeAdditionalPower(-5);
+                return true;
             }
         });
         cards.add(magic_rocket);
 
-        OneTimeTreasureCard enlightenment = new OneTimeTreasureCard("Достигни просветления", 0);
-        enlightenment.setPlay(new OneTimePlay() {
+        OneTimeTreasureCard enlightenment = new OneTimeTreasureCard("Достигни просветления", 0, new OneTimePlay() {
             @Override
-            public void Play(OneTimeTreasureCard card, Selectable target) {
-                System.out.printf("Играю %s\n", card.getName());
+            public boolean Play( OneTimeTreasureCard card,  Selectable target) {
+                 Log.fmtGlobLog("Играю %s\n", card.getName());
                 ((Person) target).increaseLevel(1);
+                return true;
             }
 
             @Override
-            public void Leave(OneTimeTreasureCard card, Selectable target) {
+            public boolean Leave( OneTimeTreasureCard card,  Selectable target) {
                 ((Person) target).decreaseLevel(1);
+                return true;
             }
         });
         cards.add(enlightenment);

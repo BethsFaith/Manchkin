@@ -13,16 +13,13 @@ public class MonsterBuffsProvider implements Deck.Provider {
     public ArrayList<Card> GetCards() {
         var cards = new ArrayList<Card>();
 
-        var big = new MonsterBuff("Громадный 0_0");
-        big.setPlay(new ChangePowerAndTreasures(10, 2));
+        var big = new MonsterBuff("Громадный 0_0", new ChangePowerAndTreasures(10, 2));
         cards.add(big);
 
-        var smart = new MonsterBuff("Умный");
-        smart.setPlay(new ChangePowerAndTreasures(5, 1));
+        var smart = new MonsterBuff("Умный", new ChangePowerAndTreasures(5, 1));
         cards.add(smart);
 
-        var smoll = new MonsterBuff("Грудничок");
-        smoll.setPlay(new ChangePowerAndTreasures(-5, -1));
+        var smoll = new MonsterBuff("Грудничок", new ChangePowerAndTreasures(-5, -1));
         cards.add(smoll);
 
         return cards;
