@@ -22,6 +22,12 @@ public class MonsterBuffsProvider implements Deck.Provider {
         var smoll = new MonsterBuff("Грудничок", new ChangePowerAndTreasures(-5, -1));
         cards.add(smoll);
 
+        var explosion = new MonsterBuff("Взрывной", new ChangePowerAndTreasures(10, 2));
+        cards.add(explosion);
+
+        var old = new MonsterBuff("Старый", new ChangePowerAndTreasures(-10, -2));
+        cards.add(old);
+
         return cards;
     }
 }

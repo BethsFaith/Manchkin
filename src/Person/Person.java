@@ -48,7 +48,7 @@ public class Person implements Selectable {
         this.cur_class = cur_class;
     }
 
-    private void calculateTotalDamage() { //высчитывает общий урон
+    private void calculateTotalDamage() { //высчитывает общую силу
         int temp = 0;
         temp += this.level;
 
@@ -116,9 +116,9 @@ public class Person implements Selectable {
     Race race = Race.human;          // текущая раса
     Class cur_class = Class.none;    // текущий класс
     int level = 1;          // текущий уровень
-    private int total_damage;
-    private int additional_power;
+    private int total_damage; //суммарная сила
+    private int additional_power; //сила из доп источников
 
-    private int runaway_bonus = 0;
-    boolean have_big = false;
+    private int runaway_bonus = 0; //бонус смывки
+    boolean have_big = false; //держит ли персонаж большую снарягу
 }
