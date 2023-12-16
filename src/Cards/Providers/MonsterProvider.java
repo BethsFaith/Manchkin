@@ -2,9 +2,11 @@ package Cards.Providers;
 
 import Cards.Card;
 import Cards.Deck;
+import Cards.Doors.DoorCard;
 import Cards.Doors.Monster.Monster;
 import Cards.Doors.Monster.MonsterCatch;
 import Cards.Doors.Monster.MonsterPlay;
+import Cards.Doors.Races.RaceCard;
 import Person.Person;
 
 import java.util.ArrayList;
@@ -23,8 +25,7 @@ public class MonsterProvider implements Deck.Provider {
             enemy.helmet = null;
         };
 
-        Monster bigFoot = new Monster(12, 3);
-        bigFoot.setName("Бигфут");
+        Monster bigFoot = new Monster("Бигфут", 12, 3);
         bigFoot.setPlay(bigFootPlay);
         bigFoot.setCatchUp(bigFootCatch);
         cards.add(bigFoot);
@@ -35,11 +36,10 @@ public class MonsterProvider implements Deck.Provider {
         MonsterPlay gicPlay = ClassBonusPlay(classes, 6);
 
         MonsterCatch gicCatch = enemy -> {
-            enemy.setCur_class(null);
+            enemy.setClass(null);
             enemy.setRace(null);
         };
-        Monster gic = new Monster(6, 2);
-        gic.setName("Гикающий гик");
+        Monster gic = new Monster("Гикающий гик", 6, 2);
         gic.setPlay(gicPlay);
         gic.setCatchUp(gicCatch);
         cards.add(gic);
@@ -50,8 +50,7 @@ public class MonsterProvider implements Deck.Provider {
                 enemy.resetLevel(); // сброс уровня на первый
             }
         };
-        Monster brothers = new Monster(16, 4);
-        brothers.setName("Братья");
+        Monster brothers = new Monster("Братья", 16, 4);
         brothers.setCatchUp(brothersCatch);
 
         cards.add(brothers);
@@ -63,13 +62,77 @@ public class MonsterProvider implements Deck.Provider {
         MonsterCatch beautyCatch = enemy -> {
             enemy.decreaseLevel(-1);
         };
-        Monster beauty = new Monster(1, 1);
-        beauty.setName("Крысавица");
+        Monster beauty = new Monster("Крысавица", 1, 1);
         beauty.setPlay(beautyPlay);
         beauty.setCatchUp(beautyCatch);
 
         cards.add(beauty);
 
+        Monster goblin = new Monster("Уверенный гоблин", 1, 1);
+        goblin.setPlay(new MonsterPlay() {
+            @Override
+            public boolean Condition(Person enemy) {
+                return true;
+            }
+
+            @Override
+            public boolean Play(Monster monster, Person enemy) {
+                enemy.changeRunAwayBonus(1);
+                return true;
+            }
+
+            @Override
+            public boolean Reverse(Monster monster, Person enemy) {
+                enemy.changeRunAwayBonus(-1);
+                return true;
+            }
+        });
+        goblin.setCatchUp(new MonsterCatch() {
+            @Override
+            public void Catch(Person enemy) {
+                enemy.decreaseLevel(1);
+            }
+        });
+        cards.add(goblin);
+
+        var vosh = new Monster("Вошки", 1, 1);
+        vosh.setPlay(new MonsterPlay() {
+            @Override
+            public boolean Condition(Person enemy) {
+                return true;
+            }
+
+            @Override
+            public boolean Play(Monster monster, Person enemy) {
+                enemy.changeRunAwayBonus(-999);
+                return true;
+            }
+
+            @Override
+            public boolean Reverse(Monster monster, Person enemy) {
+                enemy.changeRunAwayBonus(999);
+                return true;
+            }
+        });
+        vosh.setCatchUp(new MonsterCatch() {
+            @Override
+            public void Catch(Person enemy) {
+                enemy.legs = null;
+            }
+        });
+        cards.add(vosh);
+
+        var kitty = new Monster("Служитель мимиды", 14, 4);
+        var kitty_classes = new ArrayList<Person.Class>();
+        kitty_classes.add(Person.Class.thief);
+        kitty.setPlay(ClassBonusPlay(kitty_classes, 4));
+        kitty.setCatchUp(new MonsterCatch() {
+            @Override
+            public void Catch(Person enemy) {
+                enemy.weapons.get(0).unwear(enemy);
+            }
+        });
+        cards.add(kitty);
         return cards;
     }
 
@@ -78,23 +141,27 @@ public class MonsterProvider implements Deck.Provider {
             @Override
             public boolean Condition(Person enemy) {
                 boolean predicate = false;
-                Person.Class cur_class = enemy.getCur_class();
+                Person.Class cur_class = enemy.getCurClass();
                 for (Person.Class personClass : personClasses) {
                     predicate |= (cur_class == personClass);
                 }
                 return predicate;
             }
+
             @Override
-            public void Play(Monster monster, Person enemy) {
+            public boolean Play(Monster monster, Person enemy) {
                 if (Condition(enemy)) {
                     monster.ChangeAdditionalPower(bonus);
                 }
+                return true;
             }
+
             @Override
-            public void Reverse(Monster monster, Person enemy) {
+            public boolean Reverse(Monster monster, Person enemy) {
                 if (Condition(enemy)) {
                     monster.ChangeAdditionalPower(-bonus);
                 }
+                return true;
             }
         };
     }
@@ -110,17 +177,21 @@ public class MonsterProvider implements Deck.Provider {
                 }
                 return predicate;
             }
+
             @Override
-            public void Play(Monster monster, Person enemy) {
+            public boolean Play(Monster monster, Person enemy) {
                 if (Condition(enemy)) {
                     monster.ChangeAdditionalPower(bonus);
                 }
+                return true;
             }
+
             @Override
-            public void Reverse(Monster monster, Person enemy) {
+            public boolean Reverse(Monster monster, Person enemy) {
                 if (Condition(enemy)) {
                     monster.ChangeAdditionalPower(-bonus);
                 }
+                return true;
             }
         };
     }

@@ -1,8 +1,6 @@
 package Cards;
 
-import Cards.Providers.CursesCardProvider;
-import Cards.Providers.MonsterBuffsProvider;
-import Cards.Providers.MonsterProvider;
+import Cards.Providers.*;
 
 public class DeckManager {
     public DeckManager() {
@@ -10,10 +8,15 @@ public class DeckManager {
         door_deck.addDeckProvider(new MonsterProvider());
         door_deck.addDeckProvider(new CursesCardProvider());
         door_deck.addDeckProvider(new MonsterBuffsProvider());
+        door_deck.addDeckProvider(new ClassesCardProvider());
+        door_deck.addDeckProvider(new RacesCardProvider());
 
         door_deck.initCards();
 
         treasure_deck = new Deck();
+        treasure_deck.addDeckProvider(new OneTimeTreasureCardsProvider());
+        treasure_deck.addDeckProvider(new WearableTreasureCardsProvider());
+
         treasure_deck.initCards();
     }
 

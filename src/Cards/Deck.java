@@ -1,7 +1,10 @@
 package Cards;
 
+import Loggers.Log;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.logging.Level;
 
 public class Deck {
     public Deck() {
@@ -35,6 +38,10 @@ public class Deck {
     }
 
     public void addDeckProvider(Provider provider) {
+        if(provider == null){
+            Log.fmtGlobLog(Level.SEVERE, "Попытка присвоить null вместо provider");
+            return;
+        }
         providers.add(provider);
     }
 

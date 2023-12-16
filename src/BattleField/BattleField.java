@@ -15,10 +15,6 @@ public class BattleField {
             this.Participants = new ArrayList<>();
             additional_power = 0;
         }
-
-        @Override
-        public void Select() {}
-
         @Override
         public void ChangeAdditionalPower(int power_points) {
             additional_power += power_points;

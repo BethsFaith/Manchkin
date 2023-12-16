@@ -2,36 +2,40 @@ package Cards.Doors.Races;
 
 import Cards.Doors.DoorCard;
 import Common.Selectable;
+import Loggers.Log;
 import Person.Person;
 
-public class RaceCard extends DoorCard {
-    public RaceCard(Person.Race race) {
-        super(Type.RACE);
+import java.util.logging.Level;
 
+public class RaceCard extends DoorCard {
+    public RaceCard(String name, Person.Race race) {
+        super(Type.RACE);
+        setName(name);
         this.race = race;
     }
 
     @Override
-    public void Play(Selectable target) {
-        var person = (Person)target;
-        if (person == null) {
-            return; // TODO: обсудить возврат ошибок
+    public boolean Play(Selectable person) {
+        if (!(person instanceof Person)) {
+            Log.fmtGlobLog(Level.SEVERE, "Цель не персонаж");
+            return false;
         }
-
-        person.setRace(race);
+        ((Person)person).setRace(race);
+        return true;
     }
 
     @Override
-    public void Leave(Selectable target) {
-        var person = (Person)target;
-        if (person == null) {
-            return; // TODO: обсудить возврат ошибок
+    public boolean Leave(Selectable person) {
+        if (!(person instanceof Person cast)) {
+            Log.fmtGlobLog(Level.SEVERE, "Цель не персонаж");
+            return false;
         }
-
-        if (person.getRace() != race) {
-            return; // TODO: обсудить возврат ошибок
+        if (cast.getRace() != race) {
+            Log.fmtGlobLog(Level.SEVERE, "Раса изменена извне");
+            return false;
         }
-        person.setRace(Person.Race.human);
+        cast.setRace(Person.Race.human);
+        return true;
     }
 
     private final Person.Race race;

@@ -3,8 +3,8 @@ package Cards.Providers;
 import Cards.Card;
 import Cards.Deck;
 import Cards.Doors.Curses.*;
+import Loggers.Log;
 
-import Gear.ArmorGear;
 import Gear.WearableGear;
 import Person.Person;
 
@@ -15,12 +15,10 @@ public class CursesCardProvider implements Deck.Provider {
     public ArrayList<Card> GetCards() {
         var cards = new ArrayList<Card>();
 
-        var gnusCurse = new CurseCard("Невыносимо гнусное проклятие");
-
-        gnusCurse.setPlay(new CursePlay() {
+        var gnusCurse = new CurseCard("Невыносимо гнусное проклятие", new CursePlay() {
             @Override
-            public void Play(CurseCard card, Person target) {
-                System.out.printf("Играю %s\n", card.getName());
+            public boolean Play(CurseCard card, Person target) {
+                Log.fmtGlobLog("Играю %s\n", card.getName());
                 int maxPower = -1;
                 int maxPowerSlot = -1;
                 if (target.helmet != null) {
@@ -52,84 +50,98 @@ public class CursesCardProvider implements Deck.Provider {
                 switch (maxPowerSlot) {
                     case 0: {
                         target.helmet = null;
-                        System.out.println("Lose helmet");
+                         Log.fmtGlobLog("Lose helmet");
                         break;
                     }
                     case 1: {
                         target.body = null;
-                        System.out.println("Lose body");
+                         Log.fmtGlobLog("Lose body");
                         break;
                     }
                     case 2: {
                         target.legs = null;
-                        System.out.println("Lose legs");
+                         Log.fmtGlobLog("Lose legs");
                         break;
                     }
                     case 3: {
                         target.others.remove(maxOther);
-                        System.out.println("Lose other");
+                         Log.fmtGlobLog("Lose other");
                         break;
                     }
                     default: {
-                        System.out.println("Nothing to lose");
+                         Log.fmtGlobLog("Nothing to lose");
                     }
                 }
+                return false;
             }
 
             @Override
-            public void Leave(CurseCard card, Person target) {
+            public boolean Leave(CurseCard card, Person target) {
+                return false;
             }
         });
 
         cards.add(gnusCurse);
 
-        var loseHead = new CurseCard("Потеряй головняк");
-
-        loseHead.setPlay(new CursePlay() {
+        var loseHead = new CurseCard("Потеряй головняк", new CursePlay() {
             @Override
-            public void Play(CurseCard card, Person target) {
-                System.out.printf("Играю %s\n", card.getName());
+            public boolean Play(CurseCard card, Person target) {
+                 Log.fmtGlobLog("Играю %s\n", card.getName());
                 target.helmet = null;
+                return false;
             }
 
             @Override
-            public void Leave(CurseCard card, Person target) {
+            public boolean Leave(CurseCard card, Person target) {
+                return false;
             }
         });
-
         cards.add(loseHead);
 
-        var loseLevel = new CurseCard("Потеряй уровень");
-
-        loseLevel.setPlay(new CursePlay() {
+        var loseLevel = new CurseCard("Потеряй уровень", new CursePlay() {
             @Override
-            public void Play(CurseCard card, Person target) {
-                System.out.printf("Играю %s\n", card.getName());
+            public boolean Play(CurseCard card, Person target) {
+                 Log.fmtGlobLog("Играю %s\n", card.getName());
                 target.decreaseLevel(1);
+                return false;
             }
 
             @Override
-            public void Leave(CurseCard card, Person target) {
+            public boolean Leave(CurseCard card, Person target) {
+                return false;
             }
         });
-
         cards.add(loseLevel);
 
-        var loseRace = new CurseCard("Потеряй расу");
-
-        loseRace.setPlay(new CursePlay() {
+        var loseRace = new CurseCard("Потеряй расу", new CursePlay() {
             @Override
-            public void Play(CurseCard card, Person target) {
-                System.out.printf("Играю %s\n", card.getName());
+            public boolean Play(CurseCard card, Person target) {
+                 Log.fmtGlobLog("Играю %s\n", card.getName());
                 target.setRace(Person.Race.human);
+                return false;
             }
 
             @Override
-            public void Leave(CurseCard card, Person target) {
+            public boolean Leave(CurseCard card, Person target) {
+                return false;
             }
         });
 
         cards.add(loseRace);
+
+        var rock = new CurseCard("Роковой нырок", new CursePlay() {
+            @Override
+            public boolean Play(CurseCard card, Person target) {
+                target.decreaseLevel(2);
+                return true;
+            }
+
+            @Override
+            public boolean Leave(CurseCard card, Person target) {
+                target.increaseLevel(2);
+                return true;
+            }
+        });
 
         return cards;
     }
