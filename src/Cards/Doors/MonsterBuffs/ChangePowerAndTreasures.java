@@ -10,15 +10,17 @@ public class ChangePowerAndTreasures implements MonsterBuffPlay {
     }
 
     @Override
-    public void Play(MonsterBuff card, Monster target) {
+    public boolean Play(MonsterBuff card, Monster target) {
         target.ChangeAdditionalPower(power_change);
         target.changeTreasureCount(treasure_change);
+        return false;
     }
 
     @Override
-    public void Leave(MonsterBuff card, Monster target) {
+    public boolean Leave(MonsterBuff card, Monster target) {
         target.ChangeAdditionalPower(-power_change);
         target.changeTreasureCount(-treasure_change);
+        return false;
     }
 
     private final int power_change;

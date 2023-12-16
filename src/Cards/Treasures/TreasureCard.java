@@ -20,14 +20,14 @@ public abstract class TreasureCard extends Card {
         this.type = type;
     }
 
-    public Integer getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
     private Type type;
-    private Integer price;
+    private int price;
 }
