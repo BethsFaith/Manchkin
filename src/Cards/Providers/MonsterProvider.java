@@ -133,6 +133,73 @@ public class MonsterProvider implements Deck.Provider {
             }
         });
         cards.add(kitty);
+
+        var kitty_girl = new Monster("Сильная и независимая кошечка", 10, 3);
+        kitty.setCatchUp(new MonsterCatch() {
+            @Override
+            public void Catch(Person enemy) {
+                enemy.setClass(Person.Class.none);
+            }
+        });
+        cards.add(kitty_girl);
+
+        var kitty_turtle = new Monster("Черепаха Котилла", 4, 2);
+        kitty_turtle.setPlay(new MonsterPlay() {
+            @Override
+            public boolean Condition(Person enemy) {
+                return true;
+            }
+
+            @Override
+            public boolean Play(Monster monster, Person enemy) {
+                if (enemy.hand_size > 1){
+                    monster.changeTreasureCount(-2);
+                }
+                return true;
+            }
+
+            @Override
+            public boolean Reverse(Monster monster, Person enemy) {
+                if (enemy.hand_size > 1) {
+                    monster.changeTreasureCount(2);
+                }
+                return true;
+            }
+        });
+        kitty.setCatchUp(new MonsterCatch() {
+            @Override
+            public void Catch(Person enemy) {
+                if (enemy.getRace() != Person.Race.human) {
+                    enemy.setRace(Person.Race.human);
+                } else {
+                    enemy.decreaseLevel(1);
+                }
+            }
+        });
+        cards.add(kitty_turtle);
+
+        var kitty_cook = new Monster("Котята-поварята", 2, 1);
+        kitty.setCatchUp(new MonsterCatch() {
+            @Override
+            public void Catch(Person enemy) {
+                enemy.body.unwear(enemy);
+                return;
+            }
+        });
+        cards.add(kitty_cook);
+
+        var dead_horse = new Monster("Конь андедный", 4, 2);
+        var dead_horse_races = new ArrayList<Person.Race>();
+        dead_horse_races.add(Person.Race.dwarf);
+        dead_horse.setPlay(RaceBonusPlay(dead_horse_races, 5));
+        dead_horse.setCatchUp(new MonsterCatch() {
+            @Override
+            public void Catch(Person enemy) {
+                enemy.decreaseLevel(2);
+            }
+        });
+        cards.add(dead_horse);
+
         return cards;
     }
 
